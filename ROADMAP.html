@@ -17,6 +17,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="articles/pdadr.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/distintivelab/pdadr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -52,7 +53,7 @@
 <h2 id="fase-1---publicação">Fase 1 - Publicação<a class="anchor" aria-label="anchor" href="#fase-1---publica%C3%A7%C3%A3o"></a></h2>
 <ul class="task-list"><li><label><input type="checkbox" checked><code>git init</code>, primeiro commit, criar repositório <code>distintivelab/pdadr</code> e publicar (main)</label></li>
 <li><label><input type="checkbox" checked>Branch <code>gh-pages</code> criado pelo workflow <code>pkgdown.yaml</code>; site em <a href="https://distintivelab.github.io/pdadr/" class="uri">https://distintivelab.github.io/pdadr/</a></label></li>
-<li><label><input type="checkbox">Badge de status do check no README; remover comentário de <code>install_github</code> quando o repositório estiver público</label></li>
+<li><label><input type="checkbox" checked>Badge de status do check no README; remover comentário de <code>install_github</code> quando o repositório estiver público</label></li>
 <li><label><input type="checkbox" checked>Logo do pacote (<code>man/figures/logo.svg</code> + <code>logo.png</code>)</label></li>
 </ul></div>
 <div class="section level2">
@@ -72,10 +73,13 @@
 <li><label><input type="checkbox" checked>Vignette: seções “Pesos e análise” e “Territórios e harmonização com o IBGE e o geobr” (mapas por município e por RA via dissolução de setores censitários); 137 asserções de teste e <code>R CMD check</code> 0 erros / 0 warnings / 0 notes</label></li>
 </ul></div>
 <div class="section level2">
-<h2 id="fase-4---integração-com-o-ecossistema">Fase 4 - Integração com o ecossistema<a class="anchor" aria-label="anchor" href="#fase-4---integra%C3%A7%C3%A3o-com-o-ecossistema"></a></h2>
-<ul class="task-list"><li><label><input type="checkbox">Ajustar interface para o consumo pelo beep (distintivelab): confirmar formato de <code>pdadmeta</code>/saída de <code>get_pdad</code> com o consumidor e publicar release <code>v0.1.0</code></label></li>
-<li><label><input type="checkbox">Submissão ao CRAN (opcional): <code>R CMD check --as-cran</code> limpo, <code>codemeta</code>, <code>cran-comments.md</code></label></li>
-<li><label><input type="checkbox">NEWS.md, <code>CITATION</code>, <code>codemetar::write_codemeta()</code></label></li>
+<h2 id="fase-4---integração-com-o-ecossistema---concluída-exceto-submissão-ao-cran">Fase 4 - Integração com o ecossistema - Concluída (exceto submissão ao CRAN)<a class="anchor" aria-label="anchor" href="#fase-4---integra%C3%A7%C3%A3o-com-o-ecossistema---conclu%C3%ADda-exceto-submiss%C3%A3o-ao-cran"></a></h2>
+<ul class="task-list"><li><label><input type="checkbox" checked>Interface confirmada para o consumo pelo beep (distintivelab): <code>pdadmeta</code> (códigos como <code>character</code>) e a saída de <code><a href="reference/get_pdad.html">get_pdad()</a></code> (tibbles) já no formato esperado; <code>cod_ibge_municipio</code> (7 dígitos) e <code>cod_ibge_subdistrito</code> (11 dígitos: município 7d + sequencial 4d) aderem ao esquema <code>geoloc_id</code> do beep, que já trata subdistrito (no DF, região administrativa) como nível territorial</label></li>
+<li><label><input type="checkbox" checked>Release <code>v0.1.0</code> publicado no GitHub</label></li>
+<li><label><input type="checkbox" checked><code>R CMD check --as-cran</code> limpo (única NOTE: primeira submissão)</label></li>
+<li><label><input type="checkbox" checked><code>codemeta.json</code> (<code>codemetar::write_codemeta()</code>) e rascunho de <code>cran-comments.md</code></label></li>
+<li><label><input type="checkbox" checked><code>NEWS.md</code> e <code>inst/CITATION</code> (pacote + fonte dos dados IPE/DF)</label></li>
+<li><label><input type="checkbox">Submissão ao CRAN (opcional): preparada, pendente de decisão</label></li>
 </ul></div>
 <div class="section level2">
 <h2 id="fase-5---edições-futuras-da-pdad">Fase 5 - Edições futuras da PDAD<a class="anchor" aria-label="anchor" href="#fase-5---edi%C3%A7%C3%B5es-futuras-da-pdad"></a></h2>

@@ -111,16 +111,26 @@ IBGE e o geobr” (mapas por município e por RA via dissolução de setores
 censitários); 137 asserções de teste e `R CMD check` 0 erros / 0
 warnings / 0 notes
 
-## Fase 4 - Integração com o ecossistema
+## Fase 4 - Integração com o ecossistema - Concluída (exceto submissão ao CRAN)
 
-Ajustar interface para o consumo pelo beep (distintivelab): confirmar
-formato de `pdadmeta`/saída de `get_pdad` com o consumidor e publicar
-release `v0.1.0`
+Interface confirmada para o consumo pelo beep (distintivelab):
+`pdadmeta` (códigos como `character`) e a saída de
+[`get_pdad()`](https://distintivelab.github.io/pdadr/reference/get_pdad.md)
+(tibbles) já no formato esperado; `cod_ibge_municipio` (7 dígitos) e
+`cod_ibge_subdistrito` (11 dígitos: município 7d + sequencial 4d) aderem
+ao esquema `geoloc_id` do beep, que já trata subdistrito (no DF, região
+administrativa) como nível territorial
 
-Submissão ao CRAN (opcional): `R CMD check --as-cran` limpo, `codemeta`,
+Release `v0.1.0` publicado no GitHub
+
+`R CMD check --as-cran` limpo (única NOTE: primeira submissão)
+
+`codemeta.json` (`codemetar::write_codemeta()`) e rascunho de
 `cran-comments.md`
 
-NEWS.md, `CITATION`, `codemetar::write_codemeta()`
+`NEWS.md` e `inst/CITATION` (pacote + fonte dos dados IPE/DF)
+
+Submissão ao CRAN (opcional): preparada, pendente de decisão
 
 ## Fase 5 - Edições futuras da PDAD
 

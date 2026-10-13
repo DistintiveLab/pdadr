@@ -80,7 +80,7 @@ if (requireNamespace("geobr", quietly = TRUE)) {
 }
 #> ℹ Using year/date 2022
 #> duckdb keeps downloaded extensions and secrets in a temporary directory:
-#> ℹ /tmp/RtmpzN47nC/duckdb
+#> ℹ /tmp/Rtmp7n385j/duckdb
 #> This is removed when the R session ends.
 #> • Extensions are re-downloaded each session.
 #> • Secrets are lost.
