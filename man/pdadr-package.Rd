@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Funções para acessar e processar os microdados da Pesquisa Distrital por Amostra de Domicílios do Distrito Federal e entorno (PDAD-A) 2024, divulgados pelo Instituto de Pesquisa e Estratégia Econômica do Distrito Federal (IPE/DF) em \url{https://pdad.ipe.df.gov.br/}. O pacote acompanha uma tabela de metadados completa (dicionário de variáveis e códigos) para as bases de domicílios e moradores, com funções para consulta, rotulagem das variáveis codificadas e leitura direta dos microdados com cache local.
+Funções para acessar e processar os microdados da Pesquisa Distrital por Amostra de Domicílios do Distrito Federal e entorno (PDAD-A) 2024, divulgados pelo Instituto de Pesquisa e Estratégia Econômica do Distrito Federal (IPE/DF) em \url{https://pdad.ipe.df.gov.br/}. O pacote acompanha uma tabela de metadados completa (dicionário de variáveis e códigos) para as bases de domicílios e moradores, com funções para consulta, rotulagem das variáveis codificadas, leitura direta dos microdados com cache local, estimativas ponderadas e harmonização territorial com os códigos do IBGE (compatível com shapefiles do Censo e com o pacote geobr).
 }
 \seealso{
 Useful links:

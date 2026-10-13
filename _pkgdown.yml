@@ -17,10 +17,22 @@ reference:
     contents:
       - get_pdad
       - rotular
+      - juntar_bases
   - title: Metadados
     contents:
       - dicionario
       - pdadmeta
+  - title: Territórios e harmonização
+    contents:
+      - localidades
+      - setores
+      - pdad_localidades
+      - pdad_setores
+  - title: Estimativas
+    contents:
+      - estimar
+      - limpar_reservados
+      - design_pdad
   - title: Fontes
     contents:
       - fontes

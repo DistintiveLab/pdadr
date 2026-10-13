@@ -19,3 +19,4 @@
 ^revdep$
 ^renv$
 ^renv\.lock$
+^_pkgdown\.yml$

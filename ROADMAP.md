@@ -58,15 +58,32 @@ dentro do pacote + funções de consulta e leitura. Consumidor previsto:
       69.542×134) e somas dos pesos de expansão
       (1.806.637,76 domicílios; 4.255.723,77 moradores)
 
-## Fase 3 - Facilidades para análise
+## Fase 3 - Facilidades para análise - Concluída
 
-- [ ] Helpers de filtragem territorial: `localidade` (RAs, anexo_1) e
-      `setor_distrito` (anexo_2) com nomes amigáveis
-- [ ] Funções de estimativa com pesos (`peso_dom`/`peso_mor`) e
-      documentação do deflator `infla_ipcadf` (rendas `_r` já deflate)
-- [ ] Suporte opcional a `survey` (design amostral), sem torná-lo
-      dependência obrigatória (`Suggests`)
-- [ ] Cruzamento domicílio-moradores por `A01nficha`
+- [x] Helpers de filtragem territorial: `localidades()` e `setores()` sobre
+      as tabelas empacotadas `pdad_localidades` (48 localidades: 36 RAs do
+      DF + 12 municípios de GO) e `pdad_setores` (58 setores →
+      localidade), geradas por `data-raw/localidades.R`
+- [x] Harmonização com códigos do IBGE (compatível com shapefiles do
+      Censo 2022 e com o geobr): `cod_ibge_municipio` (DF = 5300108,
+      único município; GO = código do município) e
+      `cod_ibge_subdistrito` (RAs do DF como subdistritos do Censo 2022,
+      11 dígitos; 33/36 RAs cobertas — Arapoanga e Água Quente foram
+      criadas após o Censo 2022 e Área Rural não é subdistrito do IBGE)
+- [x] Funções de estimativa com pesos: `estimar()` (média/total/proporção
+      ponderados, com desagregação via `por`), `limpar_reservados()`
+      (77777/88888/99999 → NA) e documentação do deflator
+      `infla_ipcadf` (rendas `_r` já deflacionadas)
+- [x] Suporte opcional a `survey` via `design_pdad()` (desenho apenas
+      ponderado: o IPE/DF não divulga UPAs/estratos, erros-padrão não são
+      válidos para inferência); `survey` em `Suggests`
+- [x] Cruzamento domicílio-moradores por `A01nficha` com
+      `juntar_bases()` ("moradores" = left join, "completo" = full join,
+      sufixos `_mor`/`_dom`)
+- [x] Vignette: seções "Pesos e análise" e "Territórios e harmonização
+      com o IBGE e o geobr" (mapas por município e por RA via dissolução
+      de setores censitários); 137 asserções de teste e `R CMD check`
+      0 erros / 0 warnings / 0 notes
 
 ## Fase 4 - Integração com o ecossistema
 
@@ -103,3 +120,15 @@ dentro do pacote + funções de consulta e leitura. Consumidor previsto:
       projeto: os zips têm ~6 MB e servem qualquer análise
 - Sem dependência de `httr`: os downloads são diretos de arquivos
       estáticos (`utils::download.file`)
+- Harmonização territorial como dados empacotados
+      (`pdad_localidades`/`pdad_setores`, com códigos IBGE verificados e
+      registrados em `data-raw/localidades.R`): geobr/sf ficam em
+      `Suggests` e o uso offline não depende de rede
+- RAs do DF correspondem a **subdistritos** do Censo 2022 (11 dígitos),
+      não a municípios: o DF é um único município IBGE (5300108); a
+      vignette documenta a dissolução de setores censitários
+      (`geobr::read_census_tract()` + `stats::aggregate`) para obter
+      polígonos por RA
+- `estimar()` devolve apenas estimativas pontuais (sem erro-padrão);
+      `design_pdad()` cobre o acesso ao ecossistema `survey` com a
+      limitação de variância documentada
