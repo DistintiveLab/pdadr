@@ -18,6 +18,7 @@ https://pdad.ipe.df.gov.br/files/reports/moradores_60wwMwo.zip
 # pdadr <img src="man/figures/logo.png" align="right" height="138" alt="" />
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/DistintiveLab/pdadr/actions/workflows/check.yaml/badge.svg)](https://github.com/DistintiveLab/pdadr/actions/workflows/check.yaml)
 <!-- badges: end -->
 
 Acesso e processamento dos microdados da Pesquisa Distrital por Amostra
@@ -30,7 +31,7 @@ pacotes (ex.: [distintivelab/beep](https://github.com/distintivelab/beep)).
 ## Instalação
 
 ```r
-# remotes::install_github("distintivelab/pdadr")
+remotes::install_github("distintivelab/pdadr")
 ```
 
 ## Uso
