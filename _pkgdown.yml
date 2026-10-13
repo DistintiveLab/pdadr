@@ -1,0 +1,26 @@
+url: https://distintivelab.github.io/pdadr/
+
+template:
+  bootstrap: 5
+  lang: pt-BR
+
+lang: pt-BR
+
+home:
+  title: pdadr - Acesso e processamento dos microdados da PDAD-A 2024
+  description: >
+    Funções para acessar e processar os microdados da Pesquisa Distrital por
+    Amostra de Domicílios do Distrito Federal e entorno (PDAD-A) 2024.
+
+reference:
+  - title: Microdados
+    contents:
+      - get_pdad
+      - rotular
+  - title: Metadados
+    contents:
+      - dicionario
+      - pdadmeta
+  - title: Fontes
+    contents:
+      - fontes

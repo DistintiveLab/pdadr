@@ -1,0 +1,36 @@
+Package: pdadr
+Type: Package
+Title: Acesso e Processamento dos Microdados da PDAD-A 2024
+Version: 0.1.0
+Authors@R: person(given = "Rodrigo Emmanuel",
+                    family = "Santana Borges",
+                    role = c("cre","aut","cph"),
+                    email = "rodrigo@borges.net.br",
+                    comment = "affiliation - Distintive Lab & UnDF")
+Description: Funções para acessar e processar os microdados da Pesquisa
+    Distrital por Amostra de Domicílios do Distrito Federal e entorno
+    (PDAD-A) 2024, divulgados pelo Instituto de Pesquisa e Estratégia
+    Econômica do Distrito Federal (IPE/DF) em <https://pdad.ipe.df.gov.br/>.
+    O pacote acompanha uma tabela de metadados completa (dicionário de
+    variáveis e códigos) para as bases de domicílios e moradores, com
+    funções para consulta, rotulagem das variáveis codificadas e leitura
+    direta dos microdados com cache local.
+License: GPL-3
+Language: pt-BR
+Encoding: UTF-8
+LazyData: true
+Imports:
+    data.table,
+    tibble,
+    utils
+Depends:
+    R (>= 4.1.0)
+RoxygenNote: 7.3.2
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+URL: https://github.com/distintivelab/pdadr
+BugReports: https://github.com/distintivelab/pdadr/issues
