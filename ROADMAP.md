@@ -54,19 +54,24 @@ Badge de status do check no README; remover comentário de
 
 Logo do pacote (`man/figures/logo.svg` + `logo.png`)
 
-## Fase 2 - Validação de metadados
+## Fase 2 - Validação de metadados - Concluída
 
-Auditoria sistemática `pdadmeta` vs microdados reais: para cada variável
-codificada, comparar domínio observado com o dicionário; registrar
-lacunas (já conhecidas: `localidade` não codificada na planilha de
-moradores; `renda_*`, `peso_*`, `grupo_ped`, `UPT`, `criterio_brasil`,
-`arranjos` e derivadas não têm códigos)
+Auditoria sistemática `pdadmeta` vs microdados reais
+(`data-raw/auditoria_metadados.R` + relatório em
+`data-raw/auditoria_metadados.csv`): 176 variáveis ok; 47 de quantidade
+com códigos reservados; 28 sem códigos; 4 texto livre; 3 com código
+reservado omitido; 4 divergências genuínas (D15, E15_B, G06_1, G06_2)
 
-Documentar na vignette os códigos reservados (ex.: 88888, 99999) e as
-convenções de perdidos/não se aplica
+Corrigido bug do parser do anexo_7: primeiro código (76110001) de
+E19_1/E20_1 era descartado
 
-Teste de não-regressão: contagens de linhas e colunas das bases (contra
-checksums fixos)
+Documentar na vignette os códigos reservados (77777 = Recusa, 88888 =
+Não sabe, 99999 = Não se aplica; 185 variáveis) e as particularidades
+(vírgula decimal, colunas de quantidade, lacunas do dicionário oficial)
+
+Teste de não-regressão: dimensões das bases (24.845×128 e 69.542×134) e
+somas dos pesos de expansão (1.806.637,76 domicílios; 4.255.723,77
+moradores)
 
 ## Fase 3 - Facilidades para análise
 

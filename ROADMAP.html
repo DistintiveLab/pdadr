@@ -56,10 +56,11 @@
 <li><label><input type="checkbox" checked>Logo do pacote (<code>man/figures/logo.svg</code> + <code>logo.png</code>)</label></li>
 </ul></div>
 <div class="section level2">
-<h2 id="fase-2---validação-de-metadados">Fase 2 - Validação de metadados<a class="anchor" aria-label="anchor" href="#fase-2---valida%C3%A7%C3%A3o-de-metadados"></a></h2>
-<ul class="task-list"><li><label><input type="checkbox">Auditoria sistemática <code>pdadmeta</code> vs microdados reais: para cada variável codificada, comparar domínio observado com o dicionário; registrar lacunas (já conhecidas: <code>localidade</code> não codificada na planilha de moradores; <code>renda_*</code>, <code>peso_*</code>, <code>grupo_ped</code>, <code>UPT</code>, <code>criterio_brasil</code>, <code>arranjos</code> e derivadas não têm códigos)</label></li>
-<li><label><input type="checkbox">Documentar na vignette os códigos reservados (ex.: 88888, 99999) e as convenções de perdidos/não se aplica</label></li>
-<li><label><input type="checkbox">Teste de não-regressão: contagens de linhas e colunas das bases (contra checksums fixos)</label></li>
+<h2 id="fase-2---validação-de-metadados---concluída">Fase 2 - Validação de metadados - Concluída<a class="anchor" aria-label="anchor" href="#fase-2---valida%C3%A7%C3%A3o-de-metadados---conclu%C3%ADda"></a></h2>
+<ul class="task-list"><li><label><input type="checkbox" checked>Auditoria sistemática <code>pdadmeta</code> vs microdados reais (<code>data-raw/auditoria_metadados.R</code> + relatório em <code>data-raw/auditoria_metadados.csv</code>): 176 variáveis ok; 47 de quantidade com códigos reservados; 28 sem códigos; 4 texto livre; 3 com código reservado omitido; 4 divergências genuínas (D15, E15_B, G06_1, G06_2)</label></li>
+<li><label><input type="checkbox" checked>Corrigido bug do parser do anexo_7: primeiro código (76110001) de E19_1/E20_1 era descartado</label></li>
+<li><label><input type="checkbox" checked>Documentar na vignette os códigos reservados (77777 = Recusa, 88888 = Não sabe, 99999 = Não se aplica; 185 variáveis) e as particularidades (vírgula decimal, colunas de quantidade, lacunas do dicionário oficial)</label></li>
+<li><label><input type="checkbox" checked>Teste de não-regressão: dimensões das bases (24.845×128 e 69.542×134) e somas dos pesos de expansão (1.806.637,76 domicílios; 4.255.723,77 moradores)</label></li>
 </ul></div>
 <div class="section level2">
 <h2 id="fase-3---facilidades-para-análise">Fase 3 - Facilidades para análise<a class="anchor" aria-label="anchor" href="#fase-3---facilidades-para-an%C3%A1lise"></a></h2>
