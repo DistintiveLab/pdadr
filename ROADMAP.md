@@ -46,8 +46,8 @@ GitHub Actions: `R-CMD-check` (5 plataformas) e `pkgdown`
 `git init`, primeiro commit, criar repositório `distintivelab/pdadr` e
 publicar (main)
 
-Criar branch `gh-pages` vazio; o workflow `pkgdown.yaml` publica a
-documentação a cada push em main
+Branch `gh-pages` criado pelo workflow `pkgdown.yaml`; site em
+<https://distintivelab.github.io/pdadr/>
 
 Badge de status do check no README; remover comentário de
 `install_github` quando o repositório estiver público

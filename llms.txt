@@ -33,7 +33,7 @@ pacotes (ex.:
 
 ``` r
 
-# remotes::install_github("distintivelab/pdadr")
+remotes::install_github("distintivelab/pdadr")
 ```
 
 ## Uso
