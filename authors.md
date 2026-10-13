@@ -9,7 +9,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/distintivelab/pdadr/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/distintivelab/pdadr/blob/v0.1.0/inst/CITATION)
 
 Santana Borges R (2026). *pdadr: Acesso e Processamento dos Microdados
 da PDAD-A 2024*. R package version 0.1.0,
