@@ -5,7 +5,7 @@
 #' para cada variável das bases de domicílios e moradores, sua descrição
 #' e, quando codificada, a lista de códigos e respectivos rótulos.
 #'
-#' @format data.frame com 19.494 linhas e 6 colunas:
+#' @format data.frame com 19.496 linhas e 6 colunas:
 #' \describe{
 #'   \item{base}{base de origem: "domicilios" ou "moradores"}
 #'   \item{coluna}{nome da variável, conforme cabeçalho dos arquivos CSV}

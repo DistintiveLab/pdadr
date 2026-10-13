@@ -6,13 +6,15 @@
 \alias{pdadr-package}
 \title{pdadr: Acesso e Processamento dos Microdados da PDAD-A 2024}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Funções para acessar e processar os microdados da Pesquisa Distrital por Amostra de Domicílios do Distrito Federal e entorno (PDAD-A) 2024, divulgados pelo Instituto de Pesquisa e Estratégia Econômica do Distrito Federal (IPE/DF) em \url{https://pdad.ipe.df.gov.br/}. O pacote acompanha uma tabela de metadados completa (dicionário de variáveis e códigos) para as bases de domicílios e moradores, com funções para consulta, rotulagem das variáveis codificadas e leitura direta dos microdados com cache local.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/rodrigoesborges/pdadr}
-  \item Report bugs at \url{https://github.com/rodrigoesborges/pdadr/issues}
+  \item \url{https://github.com/distintivelab/pdadr}
+  \item Report bugs at \url{https://github.com/distintivelab/pdadr/issues}
 }
 
 }

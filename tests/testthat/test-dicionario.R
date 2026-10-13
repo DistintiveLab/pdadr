@@ -54,9 +54,9 @@ test_that("anexos do dicionário foram expandidos", {
   # anexo_7 traz dois blocos completos (E19_1 e E20_1)
   e19 <- meta[meta$coluna == "E19_1", ]
   e20 <- meta[meta$coluna == "E20_1", ]
-  expect_gte(nrow(e19), 5000)
-  expect_gte(nrow(e20), 5000)
-  expect_gte(nrow(e20), nrow(e19))
+  expect_equal(nrow(e19), 5606)
+  expect_equal(nrow(e20), 5654)
+  expect_true("76110001" %in% e19$valor)
   # variáveis não codificadas ficam com valor NA
   expect_true("starttime" %in% meta$coluna[is.na(meta$valor)])
 })

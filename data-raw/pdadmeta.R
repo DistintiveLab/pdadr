@@ -48,14 +48,14 @@ ler_anexo_simples <- function(planilha) {
   ret[ret$coluna != "", ]
 }
 
-# anexo_7 traz dois blocos lado a lado (E19_1 e E20_1); o segundo bloco
-# está vazio, indicando que E20_1 compartilha os códigos de E19_1
+# anexo_7 traz dois blocos lado a lado (E19_1 e E20_1); ambos com
+# códigos próprios de municípios
 ler_anexo_duplo <- function(planilha) {
   d <- as.data.frame(read_excel(arq_dic, sheet = planilha))
-  g1 <- data.frame(coluna = d[[1]][1], valor = d[[2]][-1],
-                   descricao = d[[3]][-1])
-  g2 <- data.frame(coluna = d[[6]][1], valor = d[[7]][-1],
-                   descricao = d[[8]][-1])
+  g1 <- data.frame(coluna = d[[1]][1], valor = d[[2]],
+                   descricao = d[[3]])
+  g2 <- data.frame(coluna = d[[6]][1], valor = d[[7]],
+                   descricao = d[[8]])
   out <- NULL
   for (g in list(g1, g2)) {
     if (is.na(g$coluna[1]) || all(is.na(g$valor))) next

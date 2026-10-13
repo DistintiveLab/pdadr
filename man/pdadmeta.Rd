@@ -5,7 +5,7 @@
 \alias{pdadmeta}
 \title{Tabela de metadados da PDAD-A 2024}
 \format{
-data.frame com 19.494 linhas e 6 colunas:
+data.frame com 19.496 linhas e 6 colunas:
 \describe{
   \item{base}{base de origem: "domicilios" ou "moradores"}
   \item{coluna}{nome da variável, conforme cabeçalho dos arquivos CSV}
