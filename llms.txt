@@ -1,4 +1,4 @@
-# pdadr ![](reference/figures/logo.png)
+# pdadr
 
 Vamos fazer um pacote de R para acessar e processar microdados da
 Pesquisa Distrital por Amostra de Domicílios, PDAD-A 2024, disponível

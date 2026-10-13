@@ -52,7 +52,7 @@ Branch `gh-pages` criado pelo workflow `pkgdown.yaml`; site em
 Badge de status do check no README; remover comentário de
 `install_github` quando o repositório estiver público
 
-Logo do pacote (`man/figures/logo.png`)
+Logo do pacote (`man/figures/logo.svg` + `logo.png`)
 
 ## Fase 2 - Validação de metadados
 
