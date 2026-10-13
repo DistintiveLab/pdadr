@@ -67,3 +67,34 @@ As bases trazem pesos de expansão: `peso_dom` (domicílios) e `peso_mor`
 (sufixo `_r` já deflate os valores). Para estimativas complexas,
 considere carregar as bases em um pacote de análise amostral (ex.:
 `survey`) usando esses pesos.
+
+## Códigos reservados e particularidades dos dados
+
+O questionário usa códigos reservados, presentes no dicionário em 185
+variáveis:
+
+| Código | Significado   |
+|--------|---------------|
+| 77777  | Recusa        |
+| 88888  | Não sabe      |
+| 99999  | Não se aplica |
+
+Outras particularidades constatadas na auditoria dos microdados contra o
+dicionário (`data-raw/auditoria_metadados.csv` no repositório):
+
+- **Vírgula decimal misturada**: parte das colunas numéricas
+  (`peso_dom`, `peso_mor`, `infla_ipcadf` e todas as rendas com sufixo
+  `_r`) usa vírgula como separador decimal, enquanto o restante dos
+  arquivos usa ponto.
+  [`get_pdad()`](https://distintivelab.github.io/pdadr/reference/get_pdad.md)
+  normaliza essas colunas para `numeric` automaticamente.
+- **Colunas de quantidade**: em 47 variáveis (ex.: `C07_x`, `C11_x`,
+  `B12`) o dicionário só codifica `0 = Não tem` e os códigos reservados;
+  os demais valores são as próprias quantidades, lidas como numéricas.
+- **Lacunas do dicionário oficial**: `localidade` não tem códigos na
+  planilha de moradores (use os códigos da base de domicílios); `D15`
+  registra `99999` e `0` não previstos; `E15_B` e `G06_1`/`G06_2` têm
+  valores observados fora da lista oficial; `E08_1` (CEP) é texto livre.
+  Nessas colunas
+  [`rotular()`](https://distintivelab.github.io/pdadr/reference/rotular.md)
+  preserva os valores originais.

@@ -113,6 +113,57 @@ e <code>peso_mor</code> (moradores), além do deflator
 considere carregar as bases em um pacote de análise amostral (ex.:
 <code>survey</code>) usando esses pesos.</p>
 </div>
+<div class="section level2">
+<h2 id="códigos-reservados-e-particularidades-dos-dados">Códigos reservados e particularidades dos dados<a class="anchor" aria-label="anchor" href="#c%C3%B3digos-reservados-e-particularidades-dos-dados"></a>
+</h2>
+<p>O questionário usa códigos reservados, presentes no dicionário em 185
+variáveis:</p>
+<table class="table">
+<thead><tr class="header">
+<th>Código</th>
+<th>Significado</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>77777</td>
+<td>Recusa</td>
+</tr>
+<tr class="even">
+<td>88888</td>
+<td>Não sabe</td>
+</tr>
+<tr class="odd">
+<td>99999</td>
+<td>Não se aplica</td>
+</tr>
+</tbody>
+</table>
+<p>Outras particularidades constatadas na auditoria dos microdados
+contra o dicionário (<code>data-raw/auditoria_metadados.csv</code> no
+repositório):</p>
+<ul>
+<li>
+<strong>Vírgula decimal misturada</strong>: parte das colunas
+numéricas (<code>peso_dom</code>, <code>peso_mor</code>,
+<code>infla_ipcadf</code> e todas as rendas com sufixo <code>_r</code>)
+usa vírgula como separador decimal, enquanto o restante dos arquivos usa
+ponto. <code><a href="../reference/get_pdad.html">get_pdad()</a></code> normaliza essas colunas para
+<code>numeric</code> automaticamente.</li>
+<li>
+<strong>Colunas de quantidade</strong>: em 47 variáveis (ex.:
+<code>C07_x</code>, <code>C11_x</code>, <code>B12</code>) o dicionário
+só codifica <code>0 = Não tem</code> e os códigos reservados; os demais
+valores são as próprias quantidades, lidas como numéricas.</li>
+<li>
+<strong>Lacunas do dicionário oficial</strong>:
+<code>localidade</code> não tem códigos na planilha de moradores (use os
+códigos da base de domicílios); <code>D15</code> registra
+<code>99999</code> e <code>0</code> não previstos; <code>E15_B</code> e
+<code>G06_1</code>/<code>G06_2</code> têm valores observados fora da
+lista oficial; <code>E08_1</code> (CEP) é texto livre. Nessas colunas
+<code><a href="../reference/rotular.html">rotular()</a></code> preserva os valores originais.</li>
+</ul>
+</div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>

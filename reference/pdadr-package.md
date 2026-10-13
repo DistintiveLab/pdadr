@@ -13,9 +13,9 @@ cache local.
 
 Useful links:
 
-- <https://github.com/rodrigoesborges/pdadr>
+- <https://github.com/distintivelab/pdadr>
 
-- Report bugs at <https://github.com/rodrigoesborges/pdadr/issues>
+- Report bugs at <https://github.com/distintivelab/pdadr/issues>
 
 ## Author
 

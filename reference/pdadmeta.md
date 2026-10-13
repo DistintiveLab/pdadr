@@ -13,7 +13,7 @@ pdadmeta
 
 ## Format
 
-data.frame com 19.494 linhas e 6 colunas:
+data.frame com 19.496 linhas e 6 colunas:
 
 - base:
 
