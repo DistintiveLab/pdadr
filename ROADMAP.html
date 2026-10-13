@@ -63,11 +63,13 @@
 <li><label><input type="checkbox" checked>Teste de não-regressão: dimensões das bases (24.845×128 e 69.542×134) e somas dos pesos de expansão (1.806.637,76 domicílios; 4.255.723,77 moradores)</label></li>
 </ul></div>
 <div class="section level2">
-<h2 id="fase-3---facilidades-para-análise">Fase 3 - Facilidades para análise<a class="anchor" aria-label="anchor" href="#fase-3---facilidades-para-an%C3%A1lise"></a></h2>
-<ul class="task-list"><li><label><input type="checkbox">Helpers de filtragem territorial: <code>localidade</code> (RAs, anexo_1) e <code>setor_distrito</code> (anexo_2) com nomes amigáveis</label></li>
-<li><label><input type="checkbox">Funções de estimativa com pesos (<code>peso_dom</code>/<code>peso_mor</code>) e documentação do deflator <code>infla_ipcadf</code> (rendas <code>_r</code> já deflate)</label></li>
-<li><label><input type="checkbox">Suporte opcional a <code>survey</code> (design amostral), sem torná-lo dependência obrigatória (<code>Suggests</code>)</label></li>
-<li><label><input type="checkbox">Cruzamento domicílio-moradores por <code>A01nficha</code></label></li>
+<h2 id="fase-3---facilidades-para-análise---concluída">Fase 3 - Facilidades para análise - Concluída<a class="anchor" aria-label="anchor" href="#fase-3---facilidades-para-an%C3%A1lise---conclu%C3%ADda"></a></h2>
+<ul class="task-list"><li><label><input type="checkbox" checked>Helpers de filtragem territorial: <code><a href="reference/localidades.html">localidades()</a></code> e <code><a href="reference/setores.html">setores()</a></code> sobre as tabelas empacotadas <code>pdad_localidades</code> (48 localidades: 36 RAs do DF + 12 municípios de GO) e <code>pdad_setores</code> (58 setores → localidade), geradas por <code>data-raw/localidades.R</code></label></li>
+<li><label><input type="checkbox" checked>Harmonização com códigos do IBGE (compatível com shapefiles do Censo 2022 e com o geobr): <code>cod_ibge_municipio</code> (DF = 5300108, único município; GO = código do município) e <code>cod_ibge_subdistrito</code> (RAs do DF como subdistritos do Censo 2022, 11 dígitos; 33/36 RAs cobertas — Arapoanga e Água Quente foram criadas após o Censo 2022 e Área Rural não é subdistrito do IBGE)</label></li>
+<li><label><input type="checkbox" checked>Funções de estimativa com pesos: <code><a href="reference/estimar.html">estimar()</a></code> (média/total/proporção ponderados, com desagregação via <code>por</code>), <code><a href="reference/limpar_reservados.html">limpar_reservados()</a></code> (77777/88888/99999 → NA) e documentação do deflator <code>infla_ipcadf</code> (rendas <code>_r</code> já deflacionadas)</label></li>
+<li><label><input type="checkbox" checked>Suporte opcional a <code>survey</code> via <code><a href="reference/design_pdad.html">design_pdad()</a></code> (desenho apenas ponderado: o IPE/DF não divulga UPAs/estratos, erros-padrão não são válidos para inferência); <code>survey</code> em <code>Suggests</code></label></li>
+<li><label><input type="checkbox" checked>Cruzamento domicílio-moradores por <code>A01nficha</code> com <code><a href="reference/juntar_bases.html">juntar_bases()</a></code> (“moradores” = left join, “completo” = full join, sufixos <code>_mor</code>/<code>_dom</code>)</label></li>
+<li><label><input type="checkbox" checked>Vignette: seções “Pesos e análise” e “Territórios e harmonização com o IBGE e o geobr” (mapas por município e por RA via dissolução de setores censitários); 137 asserções de teste e <code>R CMD check</code> 0 erros / 0 warnings / 0 notes</label></li>
 </ul></div>
 <div class="section level2">
 <h2 id="fase-4---integração-com-o-ecossistema">Fase 4 - Integração com o ecossistema<a class="anchor" aria-label="anchor" href="#fase-4---integra%C3%A7%C3%A3o-com-o-ecossistema"></a></h2>
@@ -91,6 +93,10 @@
 <code><a href="reference/rotular.html">rotular()</a></code> não converte colunas cujos valores observados não estão 100% cobertos pelo dicionário (proteção contra perda de dados por NA forçado); lacunas conhecidas ficam documentadas</li>
 <li>Cache único por máquina (<code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir</a></code>) em vez de cache por projeto: os zips têm ~6 MB e servem qualquer análise</li>
 <li>Sem dependência de <code>httr</code>: os downloads são diretos de arquivos estáticos (<code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">utils::download.file</a></code>)</li>
+<li>Harmonização territorial como dados empacotados (<code>pdad_localidades</code>/<code>pdad_setores</code>, com códigos IBGE verificados e registrados em <code>data-raw/localidades.R</code>): geobr/sf ficam em <code>Suggests</code> e o uso offline não depende de rede</li>
+<li>RAs do DF correspondem a <strong>subdistritos</strong> do Censo 2022 (11 dígitos), não a municípios: o DF é um único município IBGE (5300108); a vignette documenta a dissolução de setores censitários (<code><a href="https://ipea.github.io/geobr/reference/read_census_tract.html" class="external-link">geobr::read_census_tract()</a></code> + <code><a href="https://rdrr.io/r/stats/aggregate.html" class="external-link">stats::aggregate</a></code>) para obter polígonos por RA</li>
+<li>
+<code><a href="reference/estimar.html">estimar()</a></code> devolve apenas estimativas pontuais (sem erro-padrão); <code><a href="reference/design_pdad.html">design_pdad()</a></code> cobre o acesso ao ecossistema <code>survey</code> com a limitação de variância documentada</li>
 </ul></div>
 </div>
 

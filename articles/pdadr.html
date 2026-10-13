@@ -108,10 +108,99 @@ presentes.</p>
 </h2>
 <p>As bases trazem pesos de expansão: <code>peso_dom</code> (domicílios)
 e <code>peso_mor</code> (moradores), além do deflator
-<code>infla_ipcadf</code> para as variáveis de renda (sufixo
-<code>_r</code> já deflate os valores). Para estimativas complexas,
-considere carregar as bases em um pacote de análise amostral (ex.:
-<code>survey</code>) usando esses pesos.</p>
+<code>infla_ipcadf</code> (as variáveis de renda com sufixo
+<code>_r</code> já vêm corrigidas pela inflação).</p>
+<p><code><a href="../reference/estimar.html">estimar()</a></code> calcula médias, totais e proporções
+ponderadas, com desagregação por qualquer coluna:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dom</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_pdad.html">get_pdad</a></span><span class="op">(</span><span class="st">"domicilios"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># renda domiciliar média por RA (valores corrigidos pela inflação)</span></span>
+<span><span class="fu"><a href="../reference/estimar.html">estimar</a></span><span class="op">(</span><span class="va">dom</span>, <span class="st">"renda_domiciliar_r"</span>, tipo <span class="op">=</span> <span class="st">"media"</span>, por <span class="op">=</span> <span class="st">"localidade"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># proporção ponderada de domicílios por situação (após rotular)</span></span>
+<span><span class="fu"><a href="../reference/estimar.html">estimar</a></span><span class="op">(</span><span class="fu"><a href="../reference/rotular.html">rotular</a></span><span class="op">(</span><span class="va">dom</span><span class="op">)</span>, <span class="st">"A01uf"</span>, tipo <span class="op">=</span> <span class="st">"proporcao"</span><span class="op">)</span></span></code></pre></div>
+<p>Antes de estimar variáveis com códigos reservados (77777 = Recusa,
+88888 = Não sabe, 99999 = Não se aplica), converta-os em <code>NA</code>
+com <code><a href="../reference/limpar_reservados.html">limpar_reservados()</a></code>.</p>
+<p>Para usar o ecossistema do pacote <strong>survey</strong>,
+<code><a href="../reference/design_pdad.html">design_pdad()</a></code> cria o desenho amostral ponderado:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">desenho</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/design_pdad.html">design_pdad</a></span><span class="op">(</span><span class="va">dom</span><span class="op">)</span></span>
+<span><span class="fu">survey</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/survey/man/surveysummary.html" class="external-link">svymean</a></span><span class="op">(</span><span class="op">~</span><span class="va">renda_domiciliar_r</span>, <span class="va">desenho</span><span class="op">)</span></span>
+<span><span class="fu">survey</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/survey/man/svyby.html" class="external-link">svyby</a></span><span class="op">(</span><span class="op">~</span><span class="va">renda_domiciliar_r</span>, <span class="op">~</span><span class="va">localidade</span>, <span class="va">desenho</span>, <span class="fu">survey</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/survey/man/surveysummary.html" class="external-link">svymean</a></span><span class="op">)</span></span></code></pre></div>
+<p>Como o IPE/DF não divulga as unidades primárias de amostragem nem os
+estratos, o desenho é apenas ponderado (<code>ids = ~1</code>):
+erros-padrão do <code>survey</code> subestimam a variância amostral e
+não devem ser usados para inferência (as estimativas pontuais não são
+afetadas).</p>
+<p>Por fim, <code><a href="../reference/juntar_bases.html">juntar_bases()</a></code> cruza as bases pela chave do
+domicílio (<code>A01nficha</code>), sufixando as colunas comuns com
+<code>_dom</code>/<code>_mor</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bases</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_pdad.html">get_pdad</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"domicilios"</span>, <span class="st">"moradores"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/juntar_bases.html">juntar_bases</a></span><span class="op">(</span><span class="va">bases</span><span class="op">$</span><span class="va">domicilios</span>, <span class="va">bases</span><span class="op">$</span><span class="va">moradores</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># com os dois pesos presentes, informe qual usar</span></span>
+<span><span class="fu"><a href="../reference/estimar.html">estimar</a></span><span class="op">(</span><span class="va">dados</span>, <span class="st">"renda_total_r"</span>, peso <span class="op">=</span> <span class="st">"peso_mor"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="territórios-e-harmonização-com-o-ibge-e-o-geobr">Territórios e harmonização com o IBGE e o geobr<a class="anchor" aria-label="anchor" href="#territ%C3%B3rios-e-harmoniza%C3%A7%C3%A3o-com-o-ibge-e-o-geobr"></a>
+</h2>
+<p>A variável <code>localidade</code> identifica os 48 territórios da
+amostra: 36 Regiões Administrativas (RAs) do DF e 12 municípios goianos
+do entorno. As funções <code><a href="../reference/localidades.html">localidades()</a></code> e
+<code><a href="../reference/setores.html">setores()</a></code> trazem a correspondência com os códigos do
+IBGE:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/localidades.html">localidades</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/setores.html">setores</a></span><span class="op">(</span>localidade <span class="op">=</span> <span class="st">"Ceilândia"</span><span class="op">)</span></span></code></pre></div>
+<p>A estrutura territorial importa para a harmonização:</p>
+<ul>
+<li>o IBGE trata o <strong>DF como um único município</strong> (5300108,
+Brasília); no recorte mais fino do Censo 2022, as RAs correspondem aos
+<strong>subdistritos</strong> do distrito de Brasília (coluna
+<code>cod_ibge_subdistrito</code>, com 11 dígitos);</li>
+<li>os municípios goianos correspondem diretamente a municípios IBGE
+(<code>cod_ibge_municipio</code>);</li>
+<li>as localidades Arapoanga, Água Quente e Área Rural não têm
+correspondente no Censo 2022 (as duas primeiras foram criadas após o
+Censo; a última não é subdistrito) e ficam com
+<code>cod_ibge_subdistrito = NA</code>.</li>
+</ul>
+<div class="section level3">
+<h3 id="mapas-em-nível-de-município">Mapas em nível de município<a class="anchor" aria-label="anchor" href="#mapas-em-n%C3%ADvel-de-munic%C3%ADpio"></a>
+</h3>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ipea.github.io/geobr/" class="external-link">geobr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># todos os territórios da amostra sobre o mapa de municípios do Censo 2022</span></span>
+<span><span class="va">muns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipea.github.io/geobr/reference/read_municipality.html" class="external-link">read_municipality</a></span><span class="op">(</span>code <span class="op">=</span> <span class="st">"all"</span>, year <span class="op">=</span> <span class="fl">2022</span><span class="op">)</span></span>
+<span><span class="va">mapa_mun</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge</a></span><span class="op">(</span><span class="va">muns</span>, <span class="fu"><a href="../reference/localidades.html">localidades</a></span><span class="op">(</span><span class="op">)</span>, by.x <span class="op">=</span> <span class="st">"code_muni"</span>,</span>
+<span>                  by.y <span class="op">=</span> <span class="st">"cod_ibge_municipio"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mapa_mun</span><span class="op">[</span><span class="st">"nome"</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="mapas-em-nível-de-ra">Mapas em nível de RA<a class="anchor" aria-label="anchor" href="#mapas-em-n%C3%ADvel-de-ra"></a>
+</h3>
+<p>Como as RAs não existem como unidade própria nas tabelas do IBGE, o
+polígono de cada RA é obtido agregando os setores censitários do Censo
+2022 por subdistrito:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># setores censitários do DF e agregação por subdistrito (= RA)</span></span>
+<span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ipea.github.io/geobr/reference/read_census_tract.html" class="external-link">read_census_tract</a></span><span class="op">(</span><span class="fl">5300108</span>, year <span class="op">=</span> <span class="fl">2022</span><span class="op">)</span></span>
+<span><span class="va">ras</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html" class="external-link">aggregate</a></span><span class="op">(</span></span>
+<span>  <span class="va">ct</span><span class="op">[</span><span class="st">"code_subdistrict"</span><span class="op">]</span>,</span>
+<span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>cod_ibge_subdistrito <span class="op">=</span> <span class="va">ct</span><span class="op">$</span><span class="va">code_subdistrict</span><span class="op">)</span>,</span>
+<span>  FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">mapa_ra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge</a></span><span class="op">(</span><span class="va">ras</span>, <span class="fu"><a href="../reference/localidades.html">localidades</a></span><span class="op">(</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"cod_ibge_subdistrito"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mapa_ra</span><span class="op">[</span><span class="st">"nome"</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<p>Com os dados agregados por RA (ex.: renda média via
+<code>estimar(..., por = "localidade")</code>), basta um novo
+<code><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge()</a></code> pela coluna <code>valor</code> para produzir
+cartogramas temáticos da PDAD-A 2024.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="códigos-reservados-e-particularidades-dos-dados">Códigos reservados e particularidades dos dados<a class="anchor" aria-label="anchor" href="#c%C3%B3digos-reservados-e-particularidades-dos-dados"></a>

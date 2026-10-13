@@ -63,10 +63,123 @@ que infere a base a partir das colunas presentes.
 ## Pesos e análise
 
 As bases trazem pesos de expansão: `peso_dom` (domicílios) e `peso_mor`
-(moradores), além do deflator `infla_ipcadf` para as variáveis de renda
-(sufixo `_r` já deflate os valores). Para estimativas complexas,
-considere carregar as bases em um pacote de análise amostral (ex.:
-`survey`) usando esses pesos.
+(moradores), além do deflator `infla_ipcadf` (as variáveis de renda com
+sufixo `_r` já vêm corrigidas pela inflação).
+
+[`estimar()`](https://distintivelab.github.io/pdadr/reference/estimar.md)
+calcula médias, totais e proporções ponderadas, com desagregação por
+qualquer coluna:
+
+``` r
+
+dom <- get_pdad("domicilios")
+
+# renda domiciliar média por RA (valores corrigidos pela inflação)
+estimar(dom, "renda_domiciliar_r", tipo = "media", por = "localidade")
+
+# proporção ponderada de domicílios por situação (após rotular)
+estimar(rotular(dom), "A01uf", tipo = "proporcao")
+```
+
+Antes de estimar variáveis com códigos reservados (77777 = Recusa, 88888
+= Não sabe, 99999 = Não se aplica), converta-os em `NA` com
+[`limpar_reservados()`](https://distintivelab.github.io/pdadr/reference/limpar_reservados.md).
+
+Para usar o ecossistema do pacote **survey**,
+[`design_pdad()`](https://distintivelab.github.io/pdadr/reference/design_pdad.md)
+cria o desenho amostral ponderado:
+
+``` r
+
+desenho <- design_pdad(dom)
+survey::svymean(~renda_domiciliar_r, desenho)
+survey::svyby(~renda_domiciliar_r, ~localidade, desenho, survey::svymean)
+```
+
+Como o IPE/DF não divulga as unidades primárias de amostragem nem os
+estratos, o desenho é apenas ponderado (`ids = ~1`): erros-padrão do
+`survey` subestimam a variância amostral e não devem ser usados para
+inferência (as estimativas pontuais não são afetadas).
+
+Por fim,
+[`juntar_bases()`](https://distintivelab.github.io/pdadr/reference/juntar_bases.md)
+cruza as bases pela chave do domicílio (`A01nficha`), sufixando as
+colunas comuns com `_dom`/`_mor`:
+
+``` r
+
+bases <- get_pdad(c("domicilios", "moradores"))
+dados <- juntar_bases(bases$domicilios, bases$moradores)
+
+# com os dois pesos presentes, informe qual usar
+estimar(dados, "renda_total_r", peso = "peso_mor")
+```
+
+## Territórios e harmonização com o IBGE e o geobr
+
+A variável `localidade` identifica os 48 territórios da amostra: 36
+Regiões Administrativas (RAs) do DF e 12 municípios goianos do entorno.
+As funções
+[`localidades()`](https://distintivelab.github.io/pdadr/reference/localidades.md)
+e
+[`setores()`](https://distintivelab.github.io/pdadr/reference/setores.md)
+trazem a correspondência com os códigos do IBGE:
+
+``` r
+
+head(localidades())
+setores(localidade = "Ceilândia")
+```
+
+A estrutura territorial importa para a harmonização:
+
+- o IBGE trata o **DF como um único município** (5300108, Brasília); no
+  recorte mais fino do Censo 2022, as RAs correspondem aos
+  **subdistritos** do distrito de Brasília (coluna
+  `cod_ibge_subdistrito`, com 11 dígitos);
+- os municípios goianos correspondem diretamente a municípios IBGE
+  (`cod_ibge_municipio`);
+- as localidades Arapoanga, Água Quente e Área Rural não têm
+  correspondente no Censo 2022 (as duas primeiras foram criadas após o
+  Censo; a última não é subdistrito) e ficam com
+  `cod_ibge_subdistrito = NA`.
+
+### Mapas em nível de município
+
+``` r
+
+library(geobr)
+
+# todos os territórios da amostra sobre o mapa de municípios do Censo 2022
+muns <- read_municipality(code = "all", year = 2022)
+mapa_mun <- merge(muns, localidades(), by.x = "code_muni",
+                  by.y = "cod_ibge_municipio")
+plot(mapa_mun["nome"])
+```
+
+### Mapas em nível de RA
+
+Como as RAs não existem como unidade própria nas tabelas do IBGE, o
+polígono de cada RA é obtido agregando os setores censitários do Censo
+2022 por subdistrito:
+
+``` r
+
+# setores censitários do DF e agregação por subdistrito (= RA)
+ct <- read_census_tract(5300108, year = 2022)
+ras <- stats::aggregate(
+  ct["code_subdistrict"],
+  by = list(cod_ibge_subdistrito = ct$code_subdistrict),
+  FUN = function(x) x[1]
+)
+mapa_ra <- merge(ras, localidades(), by = "cod_ibge_subdistrito")
+plot(mapa_ra["nome"])
+```
+
+Com os dados agregados por RA (ex.: renda média via
+`estimar(..., por = "localidade")`), basta um novo
+[`merge()`](https://rdrr.io/r/base/merge.html) pela coluna `valor` para
+produzir cartogramas temáticos da PDAD-A 2024.
 
 ## Códigos reservados e particularidades dos dados
 

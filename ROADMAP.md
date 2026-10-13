@@ -73,18 +73,43 @@ Teste de não-regressão: dimensões das bases (24.845×128 e 69.542×134) e
 somas dos pesos de expansão (1.806.637,76 domicílios; 4.255.723,77
 moradores)
 
-## Fase 3 - Facilidades para análise
+## Fase 3 - Facilidades para análise - Concluída
 
-Helpers de filtragem territorial: `localidade` (RAs, anexo_1) e
-`setor_distrito` (anexo_2) com nomes amigáveis
+Helpers de filtragem territorial:
+[`localidades()`](https://distintivelab.github.io/pdadr/reference/localidades.md)
+e
+[`setores()`](https://distintivelab.github.io/pdadr/reference/setores.md)
+sobre as tabelas empacotadas `pdad_localidades` (48 localidades: 36 RAs
+do DF + 12 municípios de GO) e `pdad_setores` (58 setores → localidade),
+geradas por `data-raw/localidades.R`
 
-Funções de estimativa com pesos (`peso_dom`/`peso_mor`) e documentação
-do deflator `infla_ipcadf` (rendas `_r` já deflate)
+Harmonização com códigos do IBGE (compatível com shapefiles do Censo
+2022 e com o geobr): `cod_ibge_municipio` (DF = 5300108, único
+município; GO = código do município) e `cod_ibge_subdistrito` (RAs do DF
+como subdistritos do Censo 2022, 11 dígitos; 33/36 RAs cobertas —
+Arapoanga e Água Quente foram criadas após o Censo 2022 e Área Rural não
+é subdistrito do IBGE)
 
-Suporte opcional a `survey` (design amostral), sem torná-lo dependência
-obrigatória (`Suggests`)
+Funções de estimativa com pesos:
+[`estimar()`](https://distintivelab.github.io/pdadr/reference/estimar.md)
+(média/total/proporção ponderados, com desagregação via `por`),
+[`limpar_reservados()`](https://distintivelab.github.io/pdadr/reference/limpar_reservados.md)
+(77777/88888/99999 → NA) e documentação do deflator `infla_ipcadf`
+(rendas `_r` já deflacionadas)
 
-Cruzamento domicílio-moradores por `A01nficha`
+Suporte opcional a `survey` via
+[`design_pdad()`](https://distintivelab.github.io/pdadr/reference/design_pdad.md)
+(desenho apenas ponderado: o IPE/DF não divulga UPAs/estratos,
+erros-padrão não são válidos para inferência); `survey` em `Suggests`
+
+Cruzamento domicílio-moradores por `A01nficha` com
+[`juntar_bases()`](https://distintivelab.github.io/pdadr/reference/juntar_bases.md)
+(“moradores” = left join, “completo” = full join, sufixos `_mor`/`_dom`)
+
+Vignette: seções “Pesos e análise” e “Territórios e harmonização com o
+IBGE e o geobr” (mapas por município e por RA via dissolução de setores
+censitários); 137 asserções de teste e `R CMD check` 0 erros / 0
+warnings / 0 notes
 
 ## Fase 4 - Integração com o ecossistema
 
@@ -130,3 +155,18 @@ automática de novas divulgações
 - Sem dependência de `httr`: os downloads são diretos de arquivos
   estáticos
   ([`utils::download.file`](https://rdrr.io/r/utils/download.file.html))
+- Harmonização territorial como dados empacotados
+  (`pdad_localidades`/`pdad_setores`, com códigos IBGE verificados e
+  registrados em `data-raw/localidades.R`): geobr/sf ficam em `Suggests`
+  e o uso offline não depende de rede
+- RAs do DF correspondem a **subdistritos** do Censo 2022 (11 dígitos),
+  não a municípios: o DF é um único município IBGE (5300108); a vignette
+  documenta a dissolução de setores censitários
+  ([`geobr::read_census_tract()`](https://ipea.github.io/geobr/reference/read_census_tract.html) +
+  [`stats::aggregate`](https://rdrr.io/r/stats/aggregate.html)) para
+  obter polígonos por RA
+- [`estimar()`](https://distintivelab.github.io/pdadr/reference/estimar.md)
+  devolve apenas estimativas pontuais (sem erro-padrão);
+  [`design_pdad()`](https://distintivelab.github.io/pdadr/reference/design_pdad.md)
+  cobre o acesso ao ecossistema `survey` com a limitação de variância
+  documentada
