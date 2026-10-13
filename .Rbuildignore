@@ -20,3 +20,4 @@
 ^renv$
 ^renv\.lock$
 ^_pkgdown\.yml$
+^codemeta\.json$

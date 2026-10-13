@@ -19,7 +19,7 @@ data.frame com 19.496 linhas e 6 colunas:
 }
 \source{
 Extraído de
-\url{https://pdad.ipe.df.gov.br/files/reports/dicionario_de_variaveis_pdada_2024_publico.xlsx}.
+\url{https://pdad.ipe.df.gov.br/files/reports/dicionario_de_variaveis_pdada_2024_p\%C3\%BAblico.xlsx}.
 O script de geração está em \code{data-raw/pdadmeta.R}.
 }
 \usage{

@@ -1,0 +1,175 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "pdadr",
+  "description": "Funções para acessar e processar os microdados da Pesquisa Distrital por Amostra de Domicílios do Distrito Federal e entorno (PDAD-A) 2024, divulgados pelo Instituto de Pesquisa e Estratégia Econômica do Distrito Federal (IPE/DF) em <https://pdad.ipe.df.gov.br/>. O pacote acompanha uma tabela de metadados completa (dicionário de variáveis e códigos) para as bases de domicílios e moradores, com funções para consulta, rotulagem das variáveis codificadas, leitura direta dos microdados com cache local, estimativas ponderadas e harmonização territorial com os códigos do IBGE (compatível com shapefiles do Censo e com o pacote geobr).",
+  "name": "pdadr: Acesso e Processamento dos Microdados da PDAD-A 2024",
+  "codeRepository": "https://github.com/distintivelab/pdadr",
+  "issueTracker": "https://github.com/distintivelab/pdadr/issues",
+  "license": "https://spdx.org/licenses/GPL-3.0",
+  "version": "0.1.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.5.3 (2026-03-11)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Rodrigo Emmanuel",
+      "familyName": "Santana Borges",
+      "email": "rodrigo@borges.net.br"
+    }
+  ],
+  "copyrightHolder": [
+    {
+      "@type": "Person",
+      "givenName": "Rodrigo Emmanuel",
+      "familyName": "Santana Borges",
+      "email": "rodrigo@borges.net.br"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Rodrigo Emmanuel",
+      "familyName": "Santana Borges",
+      "email": "rodrigo@borges.net.br"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "geobr",
+      "name": "geobr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=geobr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "survey",
+      "name": "survey",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=survey"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "data.table",
+      "name": "data.table",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=data.table"
+    },
+    "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "tibble",
+      "name": "tibble",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
+    "4": {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 4.1.0"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "203.699KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2026",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Rodrigo Emmanuel",
+          "familyName": "Santana Borges"
+        }
+      ],
+      "name": "pdadr: Acesso e Processamento dos Microdados da PDAD-A 2024",
+      "url": "https://github.com/DistintiveLab/pdadr",
+      "description": "R package version 0.1.0"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2024",
+      "author": [
+        {
+          "@type": "Organization",
+          "name": "Instituto de Pesquisa e Estratégia Econômica do Distrito Federal"
+        }
+      ],
+      "name": "Pesquisa Distrital por Amostra de Domicílios do Distrito Federal e Entorno (PDAD-A) 2024",
+      "url": "https://pdad.ipe.df.gov.br/",
+      "description": "Microdados e dicionário de variáveis"
+    }
+  ],
+  "releaseNotes": "https://github.com/distintivelab/pdadr/blob/main/NEWS.md",
+  "readme": "https://github.com/DistintiveLab/pdadr/blob/main/README.md",
+  "contIntegration": "https://github.com/DistintiveLab/pdadr/actions/workflows/check.yaml"
+}

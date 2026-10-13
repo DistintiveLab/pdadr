@@ -1,0 +1,17 @@
+bibentry(
+  bibtype = "Manual",
+  title = "pdadr: Acesso e Processamento dos Microdados da PDAD-A 2024",
+  author = person("Rodrigo Emmanuel", "Santana Borges"),
+  year = "2026",
+  note = "R package version 0.1.0",
+  url = "https://github.com/DistintiveLab/pdadr"
+)
+
+bibentry(
+  bibtype = "Manual",
+  title = "Pesquisa Distrital por Amostra de Domicílios do Distrito Federal e Entorno (PDAD-A) 2024",
+  author = person("Instituto de Pesquisa e Estratégia Econômica do Distrito Federal"),
+  year = "2024",
+  note = "Microdados e dicionário de variáveis",
+  url = "https://pdad.ipe.df.gov.br/"
+)

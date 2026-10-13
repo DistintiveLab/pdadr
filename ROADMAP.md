@@ -36,7 +36,7 @@ dentro do pacote + funções de consulta e leitura. Consumidor previsto:
       `distintivelab/pdadr` e publicar (main)
 - [x] Branch `gh-pages` criado pelo workflow `pkgdown.yaml`; site em
       <https://distintivelab.github.io/pdadr/>
-- [ ] Badge de status do check no README; remover comentário de
+- [x] Badge de status do check no README; remover comentário de
       `install_github` quando o repositório estiver público
 - [x] Logo do pacote (`man/figures/logo.svg` + `logo.png`)
 
@@ -85,14 +85,20 @@ dentro do pacote + funções de consulta e leitura. Consumidor previsto:
       de setores censitários); 137 asserções de teste e `R CMD check`
       0 erros / 0 warnings / 0 notes
 
-## Fase 4 - Integração com o ecossistema
+## Fase 4 - Integração com o ecossistema - Concluída (exceto submissão ao CRAN)
 
-- [ ] Ajustar interface para o consumo pelo beep (distintivelab):
-      confirmar formato de `pdadmeta`/saída de `get_pdad` com o
-      consumidor e publicar release `v0.1.0`
-- [ ] Submissão ao CRAN (opcional): `R CMD check --as-cran` limpo,
-      `codemeta`, `cran-comments.md`
-- [ ] NEWS.md, `CITATION`, `codemetar::write_codemeta()`
+- [x] Interface confirmada para o consumo pelo beep (distintivelab):
+      `pdadmeta` (códigos como `character`) e a saída de `get_pdad()`
+      (tibbles) já no formato esperado; `cod_ibge_municipio` (7 dígitos) e
+      `cod_ibge_subdistrito` (11 dígitos: município 7d + sequencial 4d)
+      aderem ao esquema `geoloc_id` do beep, que já trata subdistrito
+      (no DF, região administrativa) como nível territorial
+- [x] Release `v0.1.0` publicado no GitHub
+- [x] `R CMD check --as-cran` limpo (única NOTE: primeira submissão)
+- [x] `codemeta.json` (`codemetar::write_codemeta()`) e rascunho de
+      `cran-comments.md`
+- [x] `NEWS.md` e `inst/CITATION` (pacote + fonte dos dados IPE/DF)
+- [ ] Submissão ao CRAN (opcional): preparada, pendente de decisão
 
 ## Fase 5 - Edições futuras da PDAD
 
