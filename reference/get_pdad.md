@@ -48,8 +48,8 @@ de "domicilios" e "moradores".
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # \dontrun{
 dom <- get_pdad("domicilios")
 dados <- get_pdad(c("domicilios", "moradores"), rotular = TRUE)
-# }
+} # }
 ```

@@ -44,10 +44,10 @@ ou `base` ao usar
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # \dontrun{
 bases <- get_pdad(c("domicilios", "moradores"))
 dados <- juntar_bases(bases$domicilios, bases$moradores)
 # estimar por morador exige informar o peso:
 # estimar(dados, "renda_total_r", tipo = "media", peso = "peso_mor")
-# }
+} # }
 ```

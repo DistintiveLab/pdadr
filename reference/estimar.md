@@ -75,31 +75,12 @@ antes de estimar.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # \dontrun{
 dom <- get_pdad("domicilios")
 # renda domiciliar média por RA (valores corrigidos pela inflação)
 estimar(dom, "renda_domiciliar_r", tipo = "media", por = "localidade")
-#> # A tibble: 48 × 3
-#>    localidade estimativa     n
-#>         <int>      <dbl> <int>
-#>  1       5330     68545.   802
-#>  2       5320     89541.   402
-#>  3       5315     76306.   452
-#>  4       5326     89519.   570
-#>  5       5314     79169.   800
-#>  6       5303     80112.   423
-#>  7       5311     81350.   399
-#>  8       5241     73912.   400
-#>  9       5313     89166.   451
-#> 10       5328     80407.   401
-#> # ℹ 38 more rows
 
 # proporção ponderada de domicílios por situação (após rotular)
 estimar(rotular(dom), "A01uf", tipo = "proporcao")
-#> # A tibble: 2 × 3
-#>   nivel            estimativa     n
-#>   <chr>                 <dbl> <int>
-#> 1 Distrito Federal      0.684 18130
-#> 2 Goiás                 0.316  6715
-# }
+} # }
 ```

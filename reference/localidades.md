@@ -67,7 +67,7 @@ localidades(uf = "GO")
 sum(is.na(localidades()$cod_ibge_subdistrito))  # 15
 #> [1] 15
 
-# \donttest{
+if (FALSE) { # \dontrun{
 # harmonização com geobr: RAs do DF a partir dos setores do Censo 2022
 if (requireNamespace("geobr", quietly = TRUE)) {
   ct <- geobr::read_census_tract(5300108, year = 2022)
@@ -78,14 +78,5 @@ if (requireNamespace("geobr", quietly = TRUE)) {
   )
   mapa <- merge(ras, localidades(), by = "cod_ibge_subdistrito")
 }
-#> ℹ Using year/date 2022
-#> duckdb keeps downloaded extensions and secrets in a temporary directory:
-#> ℹ /tmp/RtmpUbvAUh/duckdb
-#> This is removed when the R session ends.
-#> • Extensions are re-downloaded each session.
-#> • Secrets are lost.
-#> ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
-#> ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
-#> ℹ See ?duckdb_storage for details and alternatives.
-# }
+} # }
 ```

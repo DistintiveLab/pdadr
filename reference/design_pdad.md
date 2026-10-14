@@ -54,8 +54,8 @@ essa limitação.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # \dontrun{
 desenho <- design_pdad(get_pdad("domicilios"))
 # survey::svymean(~renda_domiciliar_r, desenho)
-# }
+} # }
 ```
