@@ -130,7 +130,9 @@ Release `v0.1.0` publicado no GitHub
 
 `NEWS.md` e `inst/CITATION` (pacote + fonte dos dados IPE/DF)
 
-Submissão ao CRAN (opcional): preparada, pendente de decisão
+Submissão ao CRAN: 0.1.0 enviada em 14/10/2026, aguardando confirmação
+por e-mail e revisão editorial (metadados em inglês; exemplos com
+download em `\dontrun`)
 
 ## Fase 5 - Edições futuras da PDAD
 
