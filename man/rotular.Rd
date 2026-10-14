@@ -27,7 +27,7 @@ A base é inferida automaticamente a partir das colunas presentes
 mas pode ser informada explicitamente.
 }
 \examples{
-\donttest{
+\dontrun{
 dom <- get_pdad("domicilios")
 dom_rot <- rotular(dom)
 table(dom_rot$localidade)

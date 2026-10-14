@@ -39,7 +39,7 @@ usados para inferência. As estimativas pontuais (médias, totais,
 proporções) não são afetadas por essa limitação.
 }
 \examples{
-\donttest{
+\dontrun{
 desenho <- design_pdad(get_pdad("domicilios"))
 # survey::svymean(~renda_domiciliar_r, desenho)
 }

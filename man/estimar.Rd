@@ -58,7 +58,7 @@ presentes em diversas variáveis: use \code{\link{limpar_reservados}}
 antes de estimar.
 }
 \examples{
-\donttest{
+\dontrun{
 dom <- get_pdad("domicilios")
 # renda domiciliar média por RA (valores corrigidos pela inflação)
 estimar(dom, "renda_domiciliar_r", tipo = "media", por = "localidade")

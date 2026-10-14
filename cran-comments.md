@@ -1,20 +1,29 @@
-# Comentários para o CRAN (rascunho — submissão pendente de decisão)
+## Test environments
 
-## Notas de teste
+-   local: Ubuntu 24.04, R 4.5.3 (release), pt_BR.UTF-8 locale
+-   GitHub Actions: ubuntu-latest (release, oldrel-1, devel),
+    windows-latest (release), macos-latest (release)
+    https://github.com/DistintiveLab/pdadr/actions
 
--   Primeira submissão do pacote.
+## R CMD check results
 
--   O pacote acompanha apenas metadados da pesquisa PDAD-A 2024 (dicionário
-    de variáveis processado); os microdados (~6 MB por base) são baixados
-    sob demanda, com cache local, a partir das URLs oficiais do IPE/DF.
-    Nenhum teste acessa a rede.
+R CMD check --as-cran was run locally on the built tarball with R 4.5.3
+(release); R-devel is covered by the GitHub Actions matrix above.
 
--   `R CMD check --as-cran` local (R 4.5.3, Ubuntu): 0 erros, 0 warnings;
-    única NOTE a de primeira submissão.
+0 errors, 0 warnings, 1 note:
 
-## Ambientes de teste
+-   New submission (first submission of this package).
 
--   GitHub Actions (R-CMD-check): ubuntu-latest (release, oldrel-1, devel),
-    windows-latest (release), macos-latest (release).
+## Additional notes
 
--   Local: R 4.5.3, Ubuntu (pt_BR.UTF-8).
+-   The package ships only survey metadata (the variable/code dictionary,
+    ~150 KB). The microdata themselves (~6 MB per database) are downloaded
+    on demand from the official IPE/DF URLs and cached locally via
+    tools::R_user_dir(). No examples, tests or vignettes access the
+    network: examples that require the microdata are marked \dontrun and
+    the vignette chunks are not evaluated.
+
+-   Package documentation, the vignette and user-facing messages are in
+    Brazilian Portuguese (Language: pt-BR declared in DESCRIPTION), as the
+    package targets users of a Brazilian official survey; the DESCRIPTION
+    metadata is in English.

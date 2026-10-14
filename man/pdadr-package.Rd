@@ -4,11 +4,11 @@
 \name{pdadr-package}
 \alias{pdadr}
 \alias{pdadr-package}
-\title{pdadr: Acesso e Processamento dos Microdados da PDAD-A 2024}
+\title{pdadr: Access and Processing of the PDAD-A 2024 Microdata}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Funções para acessar e processar os microdados da Pesquisa Distrital por Amostra de Domicílios do Distrito Federal e entorno (PDAD-A) 2024, divulgados pelo Instituto de Pesquisa e Estratégia Econômica do Distrito Federal (IPE/DF) em \url{https://pdad.ipe.df.gov.br/}. O pacote acompanha uma tabela de metadados completa (dicionário de variáveis e códigos) para as bases de domicílios e moradores, com funções para consulta, rotulagem das variáveis codificadas, leitura direta dos microdados com cache local, estimativas ponderadas e harmonização territorial com os códigos do IBGE (compatível com shapefiles do Censo e com o pacote geobr).
+Functions to access and process the microdata of the 2024 District Household Sample Survey of the Federal District of Brazil and its surrounding area (PDAD-A, 'Pesquisa Distrital por Amostra de Domicilios do Distrito Federal e entorno'), published by the Institute for Economic Research and Strategy of the Federal District (IPE/DF) at \url{https://pdad.ipe.df.gov.br/}. The package ships a complete metadata table (variable and code dictionary) for the household and resident databases, along with functions for dictionary queries, labelling of coded variables, direct reading of the microdata with local caching, weighted estimates and territorial harmonisation with IBGE geographic codes (compatible with Census shapefiles and the 'geobr' package).
 }
 \seealso{
 Useful links:

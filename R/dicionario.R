@@ -17,9 +17,7 @@
 #' dicionario(coluna = "localidade")
 #'
 #' # todas as variáveis da base de moradores
-#' \donttest{
 #' d <- dicionario(base = "moradores")
-#' }
 #'
 #' # busca por expressão regular
 #' dicionario(coluna = "^peso|^renda_domiciliar")

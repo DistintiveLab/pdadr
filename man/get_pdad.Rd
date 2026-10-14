@@ -37,7 +37,7 @@ originais são compactados (zip) e os CSVs internos usam separador
 ponto e vírgula e codificação UTF-8.
 }
 \examples{
-\donttest{
+\dontrun{
 dom <- get_pdad("domicilios")
 dados <- get_pdad(c("domicilios", "moradores"), rotular = TRUE)
 }

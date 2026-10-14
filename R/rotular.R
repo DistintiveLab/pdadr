@@ -16,7 +16,7 @@
 #' @keywords PDAD metadados
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' dom <- get_pdad("domicilios")
 #' dom_rot <- rotular(dom)
 #' table(dom_rot$localidade)

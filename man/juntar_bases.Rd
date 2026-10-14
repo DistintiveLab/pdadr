@@ -34,7 +34,7 @@ usar \code{\link{estimar}}, ou \code{base} ao usar
 \code{\link{design_pdad}}.
 }
 \examples{
-\donttest{
+\dontrun{
 bases <- get_pdad(c("domicilios", "moradores"))
 dados <- juntar_bases(bases$domicilios, bases$moradores)
 # estimar por morador exige informar o peso:

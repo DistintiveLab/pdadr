@@ -20,7 +20,7 @@
 #' @keywords PDAD microdados
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' dom <- get_pdad("domicilios")
 #' dados <- get_pdad(c("domicilios", "moradores"), rotular = TRUE)
 #' }

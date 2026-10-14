@@ -35,7 +35,7 @@ head(localidades())
 localidades(uf = "GO")
 sum(is.na(localidades()$cod_ibge_subdistrito))  # 15
 
-\donttest{
+\dontrun{
 # harmonização com geobr: RAs do DF a partir dos setores do Censo 2022
 if (requireNamespace("geobr", quietly = TRUE)) {
   ct <- geobr::read_census_tract(5300108, year = 2022)
