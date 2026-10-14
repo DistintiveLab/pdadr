@@ -12,14 +12,14 @@ Source:
 [`inst/CITATION`](https://github.com/distintivelab/pdadr/blob/main/inst/CITATION)
 
 Santana Borges R (2026). *pdadr: Acesso e Processamento dos Microdados
-da PDAD-A 2024*. R package version 0.1.0,
+da PDAD-A 2024*. R package version 0.1.1,
 <https://github.com/DistintiveLab/pdadr>.
 
     @Manual{,
       title = {pdadr: Acesso e Processamento dos Microdados da PDAD-A 2024},
       author = {Rodrigo Emmanuel {Santana Borges}},
       year = {2026},
-      note = {R package version 0.1.0},
+      note = {R package version 0.1.1},
       url = {https://github.com/DistintiveLab/pdadr},
     }
 

@@ -134,6 +134,14 @@ Submissão ao CRAN: 0.1.0 enviada em 14/10/2026, aguardando confirmação
 por e-mail e revisão editorial (metadados em inglês; exemplos com
 download em `\dontrun`)
 
+Resubmissão 0.1.1 em 14/10/2026, após o CRAN indicar possível arquivo
+inválido ROADMAP.md: verificado que o tarball 0.1.0 não o continha
+(`.Rbuildignore` efetivo; topo com apenas DESCRIPTION, NAMESPACE,
+NEWS.md, README.md); resposta factual no `cran-comments.md`, ROADMAP.md
+também no `.gitignore`, timeout de download (\>= 600 s) em
+[`get_pdad()`](https://distintivelab.github.io/pdadr/reference/get_pdad.md)
+e bump para 0.1.1
+
 ## Fase 5 - Edições futuras da PDAD
 
 Quando o IPE/DF divulgar nova edição: atualizar URLs em
