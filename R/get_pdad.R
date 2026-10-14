@@ -35,6 +35,9 @@ get_pdad <- function(base = "domicilios", rotular = FALSE,
     arq_csv <- file.path(dir_cache, paste0("pdada_2024_", b, ".csv"))
     if (forcar || !file.exists(arq_csv)) {
       arq_zip <- file.path(dir_cache, paste0(b, ".zip"))
+      # zips de ~6 MB: garante timeout generoso (sem reduzir o do usuário)
+      lim <- options(timeout = max(600, getOption("timeout")))
+      on.exit(options(lim), add = TRUE)
       utils::download.file(.pdad_urls[[b]], arq_zip, mode = "wb", quiet = TRUE)
       csv_interno <- utils::unzip(arq_zip, list = TRUE)$Name
       dest <- tempfile()

@@ -10,3 +10,4 @@ crash-*.RData
 *.Rproj
 .cache/
 *.tar.gz
+ROADMAP.md

@@ -1,7 +1,7 @@
 Package: pdadr
 Type: Package
 Title: Access and Processing of the PDAD-A 2024 Microdata
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person(given = "Rodrigo Emmanuel",
                     family = "Santana Borges",
                     role = c("cre","aut","cph"),
@@ -10,7 +10,7 @@ Authors@R: person(given = "Rodrigo Emmanuel",
 Description: Functions to access and process the microdata of the 2024
     District Household Sample Survey of the Federal District of Brazil and
     its surrounding area (PDAD-A, 'Pesquisa Distrital por Amostra de
-    Domicilios do Distrito Federal e entorno'), published by the Institute
+    Domicílios do Distrito Federal e entorno'), published by the Institute
     for Economic Research and Strategy of the Federal District (IPE/DF) at
     <https://pdad.ipe.df.gov.br/>. The package ships a complete metadata
     table (variable and code dictionary) for the household and resident

@@ -3,7 +3,7 @@ bibentry(
   title = "pdadr: Acesso e Processamento dos Microdados da PDAD-A 2024",
   author = person("Rodrigo Emmanuel", "Santana Borges"),
   year = "2026",
-  note = "R package version 0.1.0",
+  note = "R package version 0.1.1",
   url = "https://github.com/DistintiveLab/pdadr"
 )
 
