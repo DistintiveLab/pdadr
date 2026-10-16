@@ -60,4 +60,4 @@ fontes()
   linhas, 262 variáveis)
 - `fontes()`: endereços oficiais dos arquivos divulgados pelo IPE/DF
 
-Consulte o [roadmap](ROADMAP.md) para o estado de evolução do pacote.
+Consulte o roadmap para o estado de evolução do pacote.
