@@ -1,3 +1,11 @@
+# pdadr 0.1.2
+
+* Resubmissão ao CRAN: removido do `README.md` o link relativo para o
+  roadmap de desenvolvimento, pois o arquivo não é distribuído no
+  tarball (excluído via `.Rbuildignore`) e o link era apontado pela
+  equipe do CRAN como inválido.
+* Bump de versão conforme a política de submissões do CRAN.
+
 # pdadr 0.1.1
 
 * Resubmissão ao CRAN. O `get_pdad()` agora define um timeout de download
@@ -5,9 +13,9 @@
   conforme a política do CRAN para arquivos de alguns MB.
 * Bump de versão conforme a política de submissões do CRAN (versão aumentada
   mesmo quando a submissão anterior não foi aceita).
-* ROADMAP.md é um arquivo de desenvolvimento, excluído do tarball via
-  `.Rbuildignore` (o topo do tarball 0.1.0 continha apenas DESCRIPTION,
-  NAMESPACE, NEWS.md e README.md).
+* Arquivos internos de desenvolvimento permanecem excluídos do tarball
+  via `.Rbuildignore` (o topo do tarball 0.1.0 continha apenas
+  DESCRIPTION, NAMESPACE, NEWS.md e README.md).
 
 # pdadr 0.1.0
 

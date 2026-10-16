@@ -1,23 +1,26 @@
 ## Resubmission
 
-This is a resubmission of version 0.1.0, which was not accepted. In reply
-to the feedback about a possibly invalid file ROADMAP.md:
+This is a resubmission. Versions 0.1.0 and 0.1.1 were not accepted; on
+both the CRAN team flagged a possibly invalid file ROADMAP.md (again on
+0.1.1).
 
--   ROADMAP.md is an internal development roadmap. It is excluded from
-    the built tarball by `.Rbuildignore` (entry `^ROADMAP\.md$`, present
-    since the 0.1.0 submission). We verified the contents of the
-    previously submitted tarball pdadr_0.1.0.tar.gz: its top level
-    contains only DESCRIPTION, NAMESPACE, NEWS.md and README.md, and no
-    ROADMAP.md (or other development files) is included anywhere in the
-    archive. The file also cannot cause "additional issues" on the CRAN
-    results page, as the package has not been published yet.
--   As an extra precaution, ROADMAP.md was also added to `.gitignore`
-    and the package version was bumped to 0.1.1.
+Root cause identified and fixed in this version (0.1.2): README.md, which
+is shipped in the tarball, contained a relative markdown link to
+ROADMAP.md, an internal development roadmap that is excluded from the
+tarball via `.Rbuildignore`. The link therefore pointed to a file not
+included in the package. The link has been removed from README.md, and
+the reference to the roadmap file has also been removed from NEWS.md.
 
-Additionally, following the CRAN policy for submissions: downloads of
-more than a few MB now use a sufficiently large timeout. `get_pdad()`
-raises the download timeout to at least 600 seconds (restored on exit)
-before calling `download.file()`, as the microdata ZIP files are ~6 MB.
+As before, we verified the contents of the built tarball: its top level
+contains only DESCRIPTION, NAMESPACE, NEWS.md and README.md; no
+development files are included anywhere in the archive. ROADMAP.md
+remains excluded via `.Rbuildignore` and, additionally, is listed in
+`.gitignore`. The package version has been bumped at each submission
+(0.1.1, then 0.1.2) following the CRAN submission policy.
+
+The fix from 0.1.1 is retained: `get_pdad()` raises the download timeout
+to at least 600 seconds (restored on exit) before calling
+`download.file()`, as the microdata ZIP files are ~6 MB.
 
 ## Test environments
 
