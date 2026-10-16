@@ -142,6 +142,13 @@ também no `.gitignore`, timeout de download (\>= 600 s) em
 [`get_pdad()`](https://distintivelab.github.io/pdadr/reference/get_pdad.md)
 e bump para 0.1.1
 
+Resubmissão 0.1.2 em 16/10/2026, após o CRAN apontar ROADMAP.md
+novamente: causa raiz identificada no link relativo
+`[roadmap](ROADMAP.md)` do README.md (embarcado no tarball, apontando
+para arquivo não distribuído); link removido (a7d582f), menção ao
+arquivo removida do NEWS.md, bump para 0.1.2 e `cran-comments.md`
+reescrito
+
 ## Fase 5 - Edições futuras da PDAD
 
 Quando o IPE/DF divulgar nova edição: atualizar URLs em
